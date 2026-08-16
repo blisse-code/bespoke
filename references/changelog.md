@@ -1,38 +1,41 @@
 # Changelog and provenance
 
-## Sources for this skill
+## v1.0.0
 
-1. `elite-communication-codex` (superseded for Chiranjeet's own use by Gravitas; its structuring techniques generalize well to a voice-agnostic tool).
-2. "Comprehensive Deconstructed Analysis of AI-Generated Writing Indicators in Latest LLMs" (Perplexity-generated research document, uploaded PDF).
-3. "Content Formula for Algorithm Favour" (uploaded PDF).
-4. A "Content Refiner" persona system prompt (pasted directly).
+Built after benchmarking against `blader/humanizer`, an existing open-source AI-tell removal skill. v1 organized its tell taxonomy under the same category scheme humanizer uses (content-level, grammar-level, structural, filler/hedging), and its packaging (`AGENTS.md`, `.claude-plugin/`, CI workflow) closely mirrored humanizer's actual repository structure, which had been fetched directly during development. The content was original, the wording was original, but the shape of the thing was a close structural echo of the tool it was benchmarked against.
 
-## The brief
+## v2.0.0 (current)
 
-Build a skill that pairs with any writer's own voice, not just Chiranjeet's, and that exceeds `blader/humanizer` specifically on humanization, not just AI-tell removal. Evaluated against elite-communication-codex and the two uploaded documents and the pasted prompt, per the correction issued mid-conversation (the original ask had targeted `writing-constitution`, which produced Marrow instead; that work stands separately).
+**What changed and why:** rebuilt from independent research instead of from a comparative audit. The previous version's core weakness wasn't plagiarism, the words were original, it was architectural dependence: reasoning that starts from "here's what humanizer does, now do it better" produces something shaped like humanizer even when every sentence is new. v2 starts instead from four independent, established, verifiable bodies of research that have nothing to do with AI-tell removal as a category:
 
-## What was adopted
+- **Stylometry and authorship attribution** (Mosteller and Wallace, 1964; Stamatatos, 2009) for what a real voice fingerprint actually consists of.
+- **Orwell's "Politics and the English Language"** (1946) for a principled, pre-AI account of why prefabricated language reads as hollow, with a diagnosis ("gone some distance toward turning himself into a machine") more precise than any list of buzzwords.
+- **Formulaic language psycholinguistics** (Alison Wray) for why eliminating all pre-formed phrasing is the wrong goal, and what the right one is instead.
+- **Criteria-Based Content Analysis and Reality Monitoring** (Undeutsch; Steller and Köhnken, 1989), forensic-psychology research on what separates genuine, experience-based accounts from fabricated ones, repurposed here as a construction checklist rather than a detection tool.
 
-**From the Content Refiner prompt:** the four-input intake (Voice, Task, Audience, Intention) as the skill's opening workflow, this is the structural piece that makes the skill voice-agnostic rather than fixed to one person. The four Critical Content Creation Rules (Humanize the Voice, Platform-Specific Structure, Engagement Strategy, Style Guardrails) became SKILL.md Sections 2 through 5, largely intact, with the engagement gate added.
+Humanizer's 33-pattern taxonomy is real, useful, and covers ground worth covering. It's now one smaller supporting file (`plain-style-diagnostics.md`'s second section) folded under Orwell's four-fault framework rather than the organizing structure of the whole skill. The packaging (`AGENTS.md`, plugin manifests, CI) still follows the correct external schemas for Claude Code plugins and GitHub Actions, those are platform requirements, not humanizer's invention, but the wording was rewritten independently rather than adapted from humanizer's actual files.
 
-**From the content-formula document:** Context-Core-Connect for LinkedIn and Substack (already present independently in Marrow's Educational lane under the same name; consistent, not coincidental, it's a solid structure). The Essence Writing compression drill (200 to 100 to 50 words) as a concrete tightening technique. Atomic wording and declarative-statement guidance, consistent with Gravitas's existing Lexicon Engineering framework. Hypothesis Testing / Labeling as an always-available honest rapport technique.
+**What this means concretely:** `SKILL.md`'s operational instructions no longer compare themselves to humanizer anywhere. The comparison lives in exactly one place, this file, as attribution for where the benchmarking started, not as the skill's ongoing frame of reference.
 
-**From the research document:** the general, verifiable concepts (perplexity, burstiness, intrinsic-dimension analysis as real, established ideas) at a conceptual level. Nothing else from it was carried forward as fact; see `detection-science.md` for the full accounting of what was checked and what was excluded.
+## Sources that shaped the original brief
 
-**From elite-communication-codex:** Lexicon Engineering's core discipline (atomic wording, kill qualifiers) and the general shape of a structured, high-density draft. Framework 6's elicitation tactics informed the engagement-ethics gate, extending the same judgment already applied in Gravitas.
+1. `elite-communication-codex`, a prior skill whose structuring techniques informed early drafts.
+2. A research document on AI-detection science (see `detection-science.md` for a citation-fabrication correction found in it).
+3. A content-formula document on platform-favored writing patterns.
+4. A "Content Refiner" persona prompt, the source of the four-input intake (Voice, Task, Audience, Intention) that still structures `SKILL.md`'s opening workflow.
 
 ## What was rejected or gated, and why
 
-**The research document's specific statistics** (per-model buzzword frequencies, detection-evasion percentages, the embedding-dimension figures) were excluded, not summarized, after two spot-checked citations turned out to be fabricated or mismatched: one pairs a real arXiv ID with the wrong authors and a mismatched paper description, the other invents a citation for numbers that don't match the real underlying research on the same technique. Full detail in `detection-science.md`. Given the strike rate on the citations that were checked, none of the document's specific numbers were treated as reliable enough to encode into a skill.
+**The research document's specific statistics** (per-model buzzword frequencies, detection-evasion percentages, embedding-dimension figures) were excluded after two spot-checked citations turned out to be fabricated or mismatched. Full detail in `detection-science.md`.
 
-**"Trigger Correction" applied to published, audience-facing content** was gated rather than adopted outright, extending the same reasoning Gravitas already applied to one-to-one elicitation, and treating the audience-facing version as the higher-stakes case rather than a lesser one. Full reasoning in `engagement-ethics.md`.
+**Deliberate-inaccuracy engagement tactics applied to published, audience-facing content** were gated rather than adopted by default. Full reasoning in `engagement-ethics.md`.
 
-**Targeting a specific AI-detector score as the definition of success** was explicitly rejected as the skill's verification method. Current evidence (Pangram's stated adversarial training against paraphrase-based evasion, now running live on Substack) suggests this strategy is both weaker than genuine specificity and aimed at a moving, adversarially-trained target. Verification in SKILL.md Section 6 is built around specificity and voice-fidelity checks instead.
+**Targeting a specific AI-detector score as the definition of success** was rejected as the skill's verification method, in favor of the specificity and voice-fidelity checks in `SKILL.md` Sections 1 through 4.
 
 ## Naming
 
-Considered: Signature (real word, decent fit, more generic). Idiolect (the linguistically precise term for an individual's distinctive speech pattern, the best literal meaning-match, rejected for being obscure and four syllables). Landed on **Bespoke**: a real, widely understood word whose actual definition, made to order for one specific person rather than off a generic rack, is the exact thing this skill produces and the exact opposite of what makes writing read as generic AI output.
+Considered: Signature (fine, more generic). Idiolect (the linguistically precise term, and now a genuinely apt one given Section 1's grounding, but rejected again for being obscure and four syllables). Kept **Bespoke**: made to order for one specific person, not off a generic rack, which is the actual mechanism this skill now implements at every layer, not just a tagline.
 
 ## Note for this skill's original author
 
-This skill was built in the same working session as two companion skills for personal use: a fixed brand-voice skill and a high-intensity live-communication skill. Bespoke is the general-purpose version of the same underlying engine, with the private calibration stripped back out so it stands alone. See SKILL.md Section 7 for how to layer a fixed personal-voice skill on top of Bespoke if you maintain one; nothing in this repository requires it.
+This skill was built in the same working session as two companion skills for personal use: a fixed brand-voice skill and a high-intensity live-communication skill. Bespoke is the general-purpose version of the underlying engine, with the private calibration stripped back out so it stands alone. See `SKILL.md` Section 8 for how to layer a fixed personal-voice skill on top of Bespoke if you maintain one; nothing in this repository requires it.

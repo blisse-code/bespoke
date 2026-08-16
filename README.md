@@ -1,8 +1,13 @@
 # Bespoke
 
-A portable agent skill that pairs with any writer's actual voice to produce writing that reads as specifically theirs, not generic AI output. It is plain Markdown, so it runs in any harness that supports skill-style instructions, and it has zero external dependencies: no API keys, no build step, no packages to install to use it.
+A portable agent skill that builds writing from a specific person's real voice, grounded in four established, independent bodies of research rather than a fixed list of banned phrases:
 
-Bespoke goes one step further than a typical AI-tell scrubber. Most tools in this space (including [blader/humanizer](https://github.com/blader/humanizer), which this skill was benchmarked against) remove AI-sounding patterns and hand back generic clean prose. Bespoke removes the same patterns and then rebuilds the draft from a short intake and the writer's own material, so two different people using it get two different-sounding results.
+- **Stylometry and authorship attribution** for what an individual's actual linguistic fingerprint consists of (function words, sentence-length variance, recurring phrase patterns), the same class of evidence used in forensic authorship analysis since the statistical study of the disputed Federalist Papers.
+- **Orwell's plain-style diagnostics**, from "Politics and the English Language" (1946), for a principled account of why prefabricated phrasing reads as hollow, eight decades before anything resembling AI-generated text existed.
+- **Formulaic-language psycholinguistics**, for why the goal is swapping shared, generic phrasing for a writer's own recurring language, not eliminating pre-formed phrasing altogether.
+- **Forensic content-analysis criteria** (Criteria-Based Content Analysis and Reality Monitoring) for what distinguishes genuine, specific, lived detail from plausible-sounding invention.
+
+It is plain Markdown with zero external dependencies: no API keys, no build step, nothing to install to use it. Full sourcing for all four is in `references/`.
 
 ## Installation
 
@@ -79,16 +84,17 @@ Audience: my team and a few clients who are already annoyed
 Intention: own the delay without sounding defensive
 ```
 
-Give it 2-3 paragraphs of your own past writing instead of adjectives when you can. A real sample teaches Bespoke your actual sentence rhythm, vocabulary, and habits far better than a description does.
+Give it 2-3 paragraphs of your own past writing instead of adjectives when you can. A real sample gives the stylometric layer (below) something to actually measure.
 
 ## What it does
 
-- **Intake-first, not voice-fixed.** Confirms Voice, Task, Audience, and Intention before drafting, and only asks for what's actually missing.
-- **A durable voice profile**, not a one-shot style match: sentence rhythm, vocabulary register, paragraph-opening habits, punctuation quirks, and recurring phrases, built from a real sample and kept for the rest of the conversation.
-- **A 45-plus entry, voice-agnostic tell taxonomy** across content, grammar, structural, and filler/hedging patterns, each with a false-positive guard so a genuinely distinctive voice never gets flattened chasing a pattern match.
+- **A stylometric voice fingerprint**, not a one-shot style match: function-word habits, sentence-length variance, opening patterns, and the writer's own recurring bigrams and trigrams, read from a real sample and kept for the rest of the conversation.
+- **Orwell's plain-style check**, applied as a live diagnostic: dying metaphors, verbal false limbs, pretentious diction, and meaningless words, the same four faults named in 1946, with current examples.
+- **A formulaic-language swap, not a ban.** Pre-formed phrasing is normal and necessary for fluent writing; the skill directs it toward the writer's own recurring phrases instead of shared clichés.
+- **A specificity test drawn from forensic content analysis**: contextual embedding, unexpected complications, reproduced (not summarized) conversation, and admitted gaps, the actual criteria used to distinguish genuine accounts from fabricated ones, repurposed as a construction checklist.
 - **Platform-specific structure**: Context-Core-Connect for LinkedIn and Substack, hook-plus-white-space for X and Threads, tight distillation for email and Slack.
-- **An honest engagement gate.** Rapport techniques that work by being honest (labeling, hypothesis testing) are always available. Techniques that work by deceiving the reader (stating something false to bait a correction) are gated to contexts where that's disclosed and consensual, not applied by default to published, audience-facing content. See `references/engagement-ethics.md`.
-- **Verified detection science, not fabricated statistics.** `references/detection-science.md` documents exactly what's checked and sourced versus excluded, including a citation-fabrication finding in one of the documents that originally informed this skill. The short version: current classifier-based detectors are trained specifically to catch surface-level "humanized" rewriting, so this skill optimizes for genuine specificity instead of a target detector score.
+- **An honest engagement gate.** Rapport techniques that work by being honest are always available. Techniques that work by deceiving the reader are gated to disclosed, consensual contexts, not applied by default to published, audience-facing content. See `references/engagement-ethics.md`.
+- **Verified detection science, not fabricated statistics.** `references/detection-science.md` documents a citation-fabrication finding caught and excluded during research, and why current classifier-based detectors make surface-level evasion a weaker strategy than genuine specificity.
 
 ## Repository structure
 
@@ -105,8 +111,7 @@ bespoke/
 ├── scripts/
 │   └── validate_package.py         # dependency-free sync checks (stdlib only)
 └── references/
-    ├── voice-capture.md
-    ├── tell-taxonomy-general.md
+    ├── plain-style-diagnostics.md
     ├── detection-science.md
     ├── engagement-ethics.md
     └── changelog.md
@@ -122,7 +127,8 @@ Stdlib only, no `pip install` required. Checks that `SKILL.md`'s name and versio
 
 ## Version history
 
-- **1.0.0** — Initial public release. Intake-first voice pairing, seven-category tell taxonomy with a false-positive guard, honest-engagement gate, and a sourced-and-corrected detection-science reference.
+- **2.0.0** — Rebuilt around independent research (stylometry, Orwell's plain-style diagnostics, formulaic-language psycholinguistics, forensic content-analysis criteria) rather than a comparative audit of an existing tool. See `references/changelog.md` for the full account of what changed and why.
+- **1.0.0** — Initial release, built after benchmarking against an existing AI-tell removal tool. Superseded by 2.0.0's independent research base.
 
 ## License
 
@@ -130,4 +136,4 @@ MIT. See `LICENSE`.
 
 ## Credits
 
-Built after a comparative audit against [blader/humanizer](https://github.com/blader/humanizer) (MIT), whose 33-pattern taxonomy and detection-guidance discipline set the bar this skill was built to clear.
+Early development benchmarked against [blader/humanizer](https://github.com/blader/humanizer) (MIT). Bespoke's current structure is built from independent research (see `references/changelog.md`); this credit reflects where the project started, not its present design.

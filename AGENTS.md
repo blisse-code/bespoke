@@ -1,32 +1,33 @@
 # AGENTS.md
 
-Guidance for AI coding agents (Claude Code, Codex, OpenCode, Warp, and others) working in this repository, and for anyone editing it by hand.
+Notes for AI coding agents and human contributors working in this repository.
 
 ## What this repo is
 
-A portable agent skill implemented entirely as Markdown. The runtime artifact is `SKILL.md`: the agent reads its YAML frontmatter and the instructions below it. There is no build step and no code to run to use the skill. The only code in this repo (`scripts/validate_package.py`) is a packaging check, not part of the skill's runtime behavior. The repo should avoid wording that limits support to one or two harnesses; it's meant to work anywhere Markdown skill instructions are supported.
+A writing-craft skill with no executable core. `SKILL.md` is what an agent reads and follows; everything else here either documents it (`README.md`, this file) or supports distributing it (`.claude-plugin/`, `.github/`, `scripts/validate_package.py`). There's nothing to compile or install to use the skill itself.
 
 ## Key files
 
-- `SKILL.md` — the skill itself. Portable YAML frontmatter (`name`, `description`, `license`, `compatibility`, `metadata.version`) followed by the instructions. **This is the source of truth.**
-- `README.md` — for humans: installation across multiple methods, usage, a feature summary, and a version history.
-- `.claude-plugin/plugin.json` — optional Claude Code plugin manifest.
-- `.claude-plugin/marketplace.json` — optional single-repo marketplace entry so `/plugin marketplace add <owner>/bespoke` works.
-- `scripts/validate_package.py` — dependency-free (Python stdlib only) package and synchronization checks, used locally and in CI.
-- `references/` — supporting detail `SKILL.md` points to as needed: voice capture, the tell taxonomy, the detection-science sourcing, the engagement-ethics gate, and the changelog. `SKILL.md` stays the entry point; these are loaded on demand, not required reading up front.
+- `SKILL.md` — the skill. Frontmatter (`name`, `description`, `license`, `compatibility`, `metadata.version`) plus the instructions themselves. If you're changing what the skill does, this is the file to change.
+- `README.md` — the human-facing pitch: what it's grounded in, how to install it, how to use it.
+- `references/*.md` — supporting depth `SKILL.md` points to on demand. Each file traces back to a specific, named body of research; if you add a new one, it should too.
+- `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` — Claude Code plugin manifests, following Anthropic's published schema for these files.
+- `scripts/validate_package.py` — a small, dependency-free (stdlib only) script that checks version numbers and reference-file paths stay consistent across `SKILL.md` and the plugin manifests. It has nothing to do with the skill's writing instructions.
 
-## The maintenance contract
+## Keeping things in sync
 
-`SKILL.md`, `README.md`, and `.claude-plugin/plugin.json` must stay in sync:
+- Bump `metadata.version` in `SKILL.md`'s frontmatter and `version` in `.claude-plugin/plugin.json` together. `README.md`'s Version History section should get an entry in the same change. `marketplace.json` deliberately has no version field of its own; `plugin.json` is the single source of truth for that number.
+- If you add, remove, or rename a file under `references/`, update the "Reference files" list at the bottom of `SKILL.md` in the same change, and check `python3 scripts/validate_package.py` passes before committing.
+- Keep `SKILL.md` itself free of anything specific to one agent product (tool names, file paths, product-specific vocabulary). It should read the same way regardless of which harness is loading it.
 
-- **Version:** `SKILL.md` frontmatter stores the version under `metadata.version`. `.claude-plugin/plugin.json` has a top-level `version` field. `README.md` has a "Version History" section. Bump all three together. Keep the skill version under `metadata` in `SKILL.md`; a top-level `version` key is not portable across Agent Skills hosts. `marketplace.json` intentionally omits a version so `plugin.json` stays the single source of truth for it.
-- **Reference files:** if you add, remove, or rename a file under `references/`, update the "Reference files" list at the bottom of `SKILL.md` in the same change. `scripts/validate_package.py` checks that every reference `SKILL.md` names actually exists on disk, but it can't check the reverse, so don't leave an orphaned file `SKILL.md` never mentions.
-- **Compatibility:** keep install and usage language harness-neutral. The skill should work in any agent harness that can load Markdown skill instructions; Claude Code, OpenCode, Codex, and others are examples, not limits.
-- **Validation:** run `python3 scripts/validate_package.py` before publishing a change. If you have the Claude Code CLI available, `claude plugin validate .` and `npx skills add . --list` are good additional checks; CI runs equivalents of these on every push (see `.github/workflows/validate.yml`).
-- **No fabricated specifics:** if you're tempted to add a specific statistic, benchmark number, or citation to `SKILL.md` or `references/detection-science.md`, verify it against the actual source first. This skill exists partly because an earlier draft of it almost shipped fabricated citations; `references/detection-science.md` documents exactly what happened and why the standard is strict here specifically.
+## A note on sourcing
 
-## Editing SKILL.md
+Every claim in `SKILL.md` and `references/` that names a researcher, a study, or a specific figure should be independently verifiable, not just plausible-sounding. This repository exists partly because an earlier version of it repeated fabricated statistics from a source document without checking them first (see `references/changelog.md` and `references/detection-science.md` for the full account). If you're adding a new claim with a name or number attached, check it against a real source before it goes in.
 
-- Preserve valid YAML frontmatter (formatting and indentation matter for cross-host parsing).
-- The prompt below the frontmatter is the product. Edit it like a careful instruction document, not code. Keep it harness-neutral: no tool calls, file paths, or vocabulary specific to one agent product.
-- If a change alters what the skill actually does (not just wording), add a line to `README.md`'s Version History explaining what changed and why, and bump the version per the maintenance contract above.
+## Validating a change
+
+```bash
+python3 scripts/validate_package.py
+```
+
+If you have Claude Code's CLI available, `claude plugin validate .` is a useful additional check for the plugin manifests specifically. CI runs both on every push; see `.github/workflows/validate.yml`.

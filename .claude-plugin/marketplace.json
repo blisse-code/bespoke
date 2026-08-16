@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "bespoke",
-  "description": "A voice-pairing content refiner: single-plugin marketplace for the Bespoke skill.",
+  "description": "A research-grounded voice-pairing content refiner: single-plugin marketplace for the Bespoke skill.",
   "owner": {
     "name": "Chiranjeet Banerjee",
     "url": "https://github.com/<your-username>"
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "bespoke",
-      "description": "Pairs with any writer's real voice to produce writing that reads as specifically theirs, not generic AI output.",
+      "description": "Builds writing from a specific person's real voice using stylometry, plain-style diagnostics, formulaic-language research, and forensic content-analysis criteria.",
       "source": "."
     }
   ]

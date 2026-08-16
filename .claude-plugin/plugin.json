@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "bespoke",
-  "description": "Pairs with any writer's real voice to produce writing that reads as specifically theirs, not generic AI output. Voice-agnostic intake, a 45-plus entry tell taxonomy with a false-positive guard, and a sourced detection-science reference.",
-  "version": "1.0.0",
+  "description": "Builds writing from a specific person's real voice using stylometric voice-fingerprinting, Orwell's plain-style diagnostics, formulaic-language research, and forensic content-analysis criteria for genuine detail.",
+  "version": "2.0.0",
   "author": {
     "name": "Chiranjeet Banerjee",
     "url": "https://github.com/<your-username>"
