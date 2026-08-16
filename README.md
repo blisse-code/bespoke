@@ -16,7 +16,7 @@ It is plain Markdown with zero external dependencies: no API keys, no build step
 Install with the cross-agent [skills CLI](https://www.npmjs.com/package/skills):
 
 ```bash
-npx skills add <your-username>/bespoke --global
+npx skills add blisse-code/bespoke --global
 ```
 
 Update an existing install:
@@ -28,7 +28,7 @@ npx skills update bespoke --global
 To install into every supported agent harness on your machine:
 
 ```bash
-npx skills add <your-username>/bespoke --global --agent '*'
+npx skills add blisse-code/bespoke --global --agent '*'
 ```
 
 Omit `--global` for a project-local install that can be committed and shared with collaborators.
@@ -36,7 +36,7 @@ Omit `--global` for a project-local install that can be committed and shared wit
 ### Claude Code plugin
 
 ```
-/plugin marketplace add <your-username>/bespoke
+/plugin marketplace add blisse-code/bespoke
 /plugin install bespoke@bespoke
 ```
 
@@ -47,7 +47,7 @@ The skill is then invoked as `/bespoke:bespoke`.
 Any agent harness can use the skill directly because the runtime artifact is `SKILL.md`. Copy it, and the `references/` folder alongside it, into wherever your harness expects skill directories:
 
 ```bash
-git clone https://github.com/<your-username>/bespoke.git /path/to/your/skills/bespoke
+git clone https://github.com/blisse-code/bespoke.git /path/to/your/skills/bespoke
 ```
 
 Or, if you already have this repo cloned:
