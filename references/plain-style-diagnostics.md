@@ -1,6 +1,6 @@
 # Plain-style diagnostics
 
-Orwell's "Politics and the English Language" (1946) is the primary source for this file. It's cited by name and quoted briefly in `SKILL.md` Section 2; this file expands each of his four faults with current examples, then adds a smaller, clearly-separated set of structural and formatting patterns that weren't part of Orwell's essay (some genuinely are new, formatting habits didn't mean the same thing in an essay written for print in 1946) but sit in the same family: pre-formed moves reached for without thought.
+Orwell's "Politics and the English Language" (1946) is the primary source for this file. It's cited by name and quoted briefly in `SKILL.md` Section 2; this file expands each of his four faults with current examples, then adds three clusters of structural patterns that weren't part of Orwell's essay but sit in the same family: a pre-formed shape reached for instead of a considered one. Typography and formatting (em dashes, curly quotes, heading case, and the rest) live in the companion file `typographic-markers.md`, since they're a different kind of signal, closer to Section 1's voice-fingerprint concept than to word choice.
 
 ---
 
@@ -40,15 +40,49 @@ Orwell's "Politics and the English Language" (1946) is the primary source for th
 
 ---
 
-## A smaller set of structural and formatting patterns
+## Three clusters of pre-formed shape, beyond Orwell's four faults
 
-These weren't part of Orwell's essay, print journalism in 1946 didn't have the same formatting habits as a LinkedIn post does now, but they're the same underlying move: a pre-formed shape reached for instead of a considered one. Keep this list short on purpose; it's meant to be the minority of this file, not its spine.
+Orwell's essay is from 1946 and, understandably, doesn't cover typography (that's `typographic-markers.md`) or a handful of structural moves more common in web and social writing than in the print prose he was diagnosing. These sit in the same family as his four faults, a shape reached for instead of a thought, and organize into three clusters. Keep this section a secondary tool in practice: the plain-style check above is primary, this is the backup pass.
 
-- **Rule-of-three padding.** "Innovation, inspiration, and insight" fails a simple test: does each item carry distinct, checkable weight, or would the sentence lose nothing with two items or four? Real triads pass. Decorative ones don't.
-- **Manufactured metaphor stacking.** One vivid comparison, earned, lands. Three across one short piece reads as trying, for the same reason Orwell's dying metaphors do: retrieved for effect, not because each one clarifies something new.
+### Cluster A: borrowed authority
+
+Ways a sentence implies credibility it hasn't earned, close cousins of pretentious diction applied to sourcing rather than vocabulary.
+
+- **Vague attribution.** "Experts believe," "studies show," without naming who or which. Either name the source or cut the claim. This is also a specificity-test failure; see `SKILL.md` Section 4.
+- **Notability namedropping.** Listing outlets or follower counts as a stand-in for an actual point ("featured in X, Y, Z"). Say the specific thing one of those sources actually said, or drop the list.
+- **Persuasive authority tropes.** "At its core," "the real question is," "what really matters is," performing the act of cutting through noise instead of doing it. The sentence that follows is usually an ordinary point in ceremonial dress.
+
+### Cluster B: decorative structure
+
+Shapes reached for because they're available, not because the content calls for them.
+
+- **Rule-of-three padding.** "Innovation, inspiration, and insight" fails a simple test: does each item carry distinct, checkable weight, or would the sentence lose nothing with two items or four? Real triads pass.
+- **Synonym cycling (elegant variation).** Renaming the same referent every sentence to avoid repeating a word ("the founder... the entrepreneur... the visionary..."). Repeating the plainest word is more natural than cycling synonyms.
+- **False ranges.** "From X to Y" used to sound sweeping when X and Y aren't actually on a meaningful scale. List the real things instead.
+- **Negative parallelisms and tailing negations.** "It's not just X, it's Y" as a reflexive structure, and its smaller cousin, a clipped negative fragment tacked onto a sentence's end ("no guessing," "no wasted motion") instead of written as a real clause.
+- **Manufactured metaphor stacking.** One vivid comparison, earned, lands. Three across one short piece reads as trying, retrieved for effect rather than because each one clarifies something new.
 - **Mechanical repetition of a thesis.** Restating the same point three times in different words isn't reinforcement, it's the same idea wearing different clothes. Real reinforcement adds a new angle or new evidence each time.
-- **Signposting instead of doing.** "Let's dive into how this works" announces the move instead of making it. Orwell's own advice covers this implicitly: if a word or phrase can be cut, cut it, and an announcement of what's about to happen is almost always cuttable.
-- **Copula avoidance.** "Serves as," "boasts," "features" used where "is" or "has" would be plainer, a close cousin of Orwell's verbal false limbs (fault 2), specifically about avoiding a simple "to be."
+- **Manufactured punchline runs.** One short declarative sentence for emphasis lands. Three or more in a row, each performing the same dramatic beat, is the tell, regardless of how true each individual line is.
+- **Fragmented headers.** A heading immediately followed by a one-line paragraph that just restates the heading before real content starts. Cut the restatement.
+- **Aphorism formulas.** "X is not a Y, it's a Z," "X is the language of Y," a template that makes an ordinary claim sound profound because it's portable across any topic with the nouns swapped. Replace with the actual mechanism the claim is gesturing at.
+- **Copula avoidance.** "Serves as," "boasts," "features" used where "is" or "has" would be plainer, a close cousin of Orwell's verbal false limbs (Fault 2), specifically about avoiding a simple "to be."
+- **Signposting instead of doing.** "Let's dive into how this works" announces the move instead of making it. If a phrase can be cut, cut it, per Orwell's third rule, and an announcement of what's about to happen is almost always cuttable.
+
+### Cluster C: borrowed register
+
+Language that belongs to a different kind of exchange, leaking into content where it doesn't fit.
+
+- **Chatbot artifacts.** "I hope this helps," "let me know if you'd like me to expand," correspondence-shaped language pasted into content that isn't correspondence.
+- **Sycophantic tone.** "Great question!", "you're absolutely right," warmth performed as a reflex rather than felt, a specific instance of Orwell's insincerity diagnosis: the tone doing work the content isn't backing up.
+- **Conversational rhetorical openers.** "Honestly?", "Look,", "here's the thing," used as a standalone theatrical pause before an ordinary point. The tell is the pause-and-reveal structure, not the words themselves; "honestly" used mid-sentence in ordinary speech is fine.
+
+### Padding at the paragraph level
+
+Orwell's verbal false limbs (Fault 2) operate on the sentence. These are the same move at the level of a whole paragraph.
+
+- **The formulaic "despite challenges, continues to thrive" close.** A challenges paragraph that resolves into vague optimism instead of a specific outcome. Replace with the actual trade-off made.
+- **Diff-anchored writing.** Narrating what changed instead of describing what a thing is now, in a document that isn't itself a changelog. "This was added to replace the old approach, which caused problems" makes the reader reconstruct history to understand the present. Describe what it is; the history is context, not the lead.
+- **Superficial "-ing" tack-ons.** A claim followed by a present-participle clause that restates it with false depth ("...reflecting the region's resilience," "...showcasing years of craft"). Adds a decorative clause, not a second real idea.
 
 ## What NOT to flag
 

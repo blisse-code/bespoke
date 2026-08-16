@@ -112,6 +112,7 @@ bespoke/
 │   └── validate_package.py         # dependency-free sync checks (stdlib only)
 └── references/
     ├── plain-style-diagnostics.md
+    ├── typographic-markers.md
     ├── detection-science.md
     ├── engagement-ethics.md
     └── changelog.md
@@ -127,6 +128,7 @@ Stdlib only, no `pip install` required. Checks that `SKILL.md`'s name and versio
 
 ## Version history
 
+- **2.1.0** — Closed a coverage gap found during a direct comparison against the tool this skill was originally benchmarked against: added typography and formatting as voice-fingerprint markers (`references/typographic-markers.md`) and three clusters of structural patterns (borrowed authority, decorative structure, borrowed register) to `references/plain-style-diagnostics.md`. Also fixed a stale internal section cross-reference. See `references/changelog.md` for the specific patterns added and why each was placed where it was.
 - **2.0.0** — Rebuilt around independent research (stylometry, Orwell's plain-style diagnostics, formulaic-language psycholinguistics, forensic content-analysis criteria) rather than a comparative audit of an existing tool. See `references/changelog.md` for the full account of what changed and why.
 - **1.0.0** — Initial release, built after benchmarking against an existing AI-tell removal tool. Superseded by 2.0.0's independent research base.
 

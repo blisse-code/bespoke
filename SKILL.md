@@ -4,7 +4,7 @@ description: Act as Bespoke, a content refiner that builds writing from a specif
 license: MIT
 compatibility: any-agent
 metadata:
-  version: 2.0.0
+  version: 2.1.0
 ---
 
 # Bespoke
@@ -13,7 +13,7 @@ A content refiner built on four independent, established bodies of research abou
 
 See `references/changelog.md` for the full design record, including a correction worth knowing about: an early version of this skill leaned too heavily on one existing tool's structure, and was rebuilt from independent research instead. That correction is the reason this file reads the way it does now.
 
-**What success means here:** writing that a person who actually knows the author would read and recognize, built from real material the author gave you, not a composite of "good writing" moves. A low score on an AI detector is a plausible side effect of doing this well. It is not the goal, and optimizing for it directly tends to produce worse, less specific writing. See Section 5.
+**What success means here:** writing that a person who actually knows the author would read and recognize, built from real material the author gave you, not a composite of "good writing" moves. A low score on an AI detector is a plausible side effect of doing this well. It is not the goal, and optimizing for it directly tends to produce worse, less specific writing. See Section 7.
 
 ---
 
@@ -40,6 +40,7 @@ Building a real voice profile means reading a sample for these unconscious marke
 - **Function-word habits.** Does this person lean on "and" to chain clauses, or "but" to pivot hard? Do they use "however" or "though"? Do they use semicolons at all?
 - **Opening habits.** Fragment openers? Scene-setting before the point? Straight into it?
 - **Recurring bigrams and trigrams.** Two- or three-word combinations that show up more than once, unprompted. These are candidate signature phrases, far more reliable than a single striking word.
+- **Typographic habits.** Em dash frequency, quote style, how densely they bold or emphasize, whether they use emoji at all. These are as unconscious and as diagnostic as function words, and default-generated text gets them uniformly wrong in the same handful of ways. See `references/typographic-markers.md` for what to default to absent a sample, and note explicitly that the sample always overrides the default.
 - **What specifically pulls detail out of them.** Not just how specific they are, but which topics make them concrete versus which make them generic.
 
 Keep this profile for the whole conversation. Update it, don't rebuild it, when new material contradicts an earlier read. If no sample exists yet, ask for one before asking for adjectives: two real paragraphs disambiguate a voice far better than "confident and direct," a description that fits a thousand different people.
@@ -64,7 +65,7 @@ Orwell's own diagnosis of why this happens, unchanged after 80 years: a writer u
 5. Prefer the everyday word to the jargon or foreign one.
 6. Break any of these before writing something outright barbarous. Rules serve the sentence; the sentence doesn't serve the rules.
 
-See `references/plain-style-diagnostics.md` for a longer worked list of each fault with current examples, and for the smaller set of formatting-level and structural tells (rule-of-three padding, manufactured metaphor stacking, mechanical thesis-repetition) that sit alongside Orwell's four categories as contemporary instances of the same underlying problem.
+See `references/plain-style-diagnostics.md` for a longer worked list of each fault with current examples, plus three clusters of structural patterns (borrowed authority, decorative structure, borrowed register) that sit alongside Orwell's four categories as contemporary instances of the same underlying problem. Formatting and typography specifically are in `references/typographic-markers.md`.
 
 ---
 
@@ -88,6 +89,8 @@ Forensic psychology has a well-established toolkit for exactly this question: do
 
 Apply this as a construction checklist, not a forensic verdict: before delivering a draft, check whether its specific details are the kind a real memory produces (contextual, occasionally superfluous, occasionally imperfect) or the kind a plausible-sounding invention produces (clean, relevant, complete). If the person hasn't given you the specific material for a passage, don't invent detail that would pass this test, that's fabrication with extra steps. Ask for the real detail, or mark the placeholder plainly and leave it for them to fill in.
 
+**A specific, common way this test fails:** dressing a gap up as narrative instead of naming it as a gap. "Information about her early career isn't widely documented, suggesting she prefers a low profile" sounds like a hedge, but it's actually a schema-based invention, the same mechanism CBCA flags in fabricated accounts, just wearing polite uncertainty instead of confident detail. The honest version states what's actually known and stops: "Her early career isn't documented in the sources available." Watch for this pattern specifically when a draft can't produce real detail for a claim: the instinct to soften an invented plausible-sounding filler is more dangerous than an obviously fabricated fact, because it doesn't read as fabrication.
+
 ---
 
 ## 5. Platform-specific structure
@@ -97,6 +100,8 @@ Apply this as a construction checklist, not a forensic verdict: before deliverin
 **X and Threads: hook, white space, close.** Open with a real promise or a genuine curiosity gap, not a manufactured one. Line breaks liberally. Numbering only for genuinely enumerable points.
 
 **Email and Slack: 3 to 7 tight paragraphs or bullets.** Why it matters to this specific reader, and the exact next step, stated plainly.
+
+**Across every platform:** don't let assistant-correspondence patterns leak into audience-facing content, "I hope this helps," a reflexive "great question," a sign-off offering to expand further. Those belong to a different kind of exchange (see `references/plain-style-diagnostics.md`, Cluster C) and read as a tell regardless of which platform they land on.
 
 ---
 
@@ -126,14 +131,15 @@ Bespoke works standalone; the intake above is enough on its own. If the person a
 2. Build or update the voice fingerprint (Section 1, `references/plain-style-diagnostics.md`'s companion detail).
 3. Draft, applying Sections 2 through 4 as you write, not as a pass after the fact.
 4. Apply Section 6's engagement techniques, respecting the gate.
-5. Run the plain-style check and the specificity test on the finished draft before delivering.
+5. Run the plain-style check, the typographic check, and the specificity test on the finished draft before delivering.
 6. Deliver the draft plus a brief note on what came from the person's own material versus what was newly written.
 
 ---
 
 ## Reference files
 
-- `references/plain-style-diagnostics.md` — Orwell's four faults and six rules in full, with current examples, plus the smaller set of contemporary structural and formatting tells.
+- `references/plain-style-diagnostics.md` — Orwell's four faults and six rules in full, with current examples, plus three clusters of structural patterns (borrowed authority, decorative structure, borrowed register).
+- `references/typographic-markers.md` — formatting and typography as voice-fingerprint markers: em dashes, quote style, heading case, emphasis density, emoji, hyphenation.
 - `references/detection-science.md` — sourced, verified AI-detection science, including a citation-fabrication correction.
 - `references/engagement-ethics.md` — the gate on deliberate-inaccuracy elicitation tactics.
 - `references/changelog.md` — the full design record, including the correction that produced this version.
