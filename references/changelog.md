@@ -1,6 +1,14 @@
 # Changelog and provenance
 
-## v2.2.1 (current)
+## v2.3.0 (current)
+
+**Trigger:** the intake asked for a voice sample when none existed, but never posed the own-style-or-default choice explicitly, and had no enforced minimum on what counted as "a sample." In practice this let a few adjectives ("direct, a little dry") stand in for a real fingerprint, exactly the weak signal Section 1 already argued against in its own closing line. Requested fix: an explicit choice, own style or default, and a hard 100-word floor on what "own style" accepts.
+
+**What changed:** `SKILL.md`'s intake item 1 (Voice) now asks the own-style-or-default question directly rather than defaulting to a sample-or-adjectives request. Section 1 gained a new subsection, "The own-style-or-default gate," specifying: own style requires a real sample (essay, article, blog post, past social post, email) of at least 100 words, with an explicit instruction to ask for more if under that floor rather than build a fingerprint from too little data; default explicitly waives the personal fingerprint while keeping every plain-style and typographic default in force; adjectives alone no longer satisfy either path. The exception carried over unchanged: a real 100+ word sample pasted unprompted, or Section 8's fixed personal-voice skill, resolves the choice without asking.
+
+**What this doesn't do:** no pattern in `plain-style-diagnostics.md` or `typographic-markers.md` changed, and Sections 2 through 9 are untouched. This is entirely an intake-mechanics change, tightening how the Voice question gets asked and validated, not what the skill does once Voice is answered.
+
+## v2.2.1
 
 **Trigger:** the skill was installed locally and run for the first time end-to-end (previous versions were validated by reading, not by invocation), specifically to produce a second worked example for `README.md` demonstrating Section 1 (voice fingerprint) and Section 4 (specificity test) on a short, unformatted personal narrative, layered under a separate fixed personal-voice skill per Section 8, rather than the mostly-structural/typographic before/after already in the README.
 
