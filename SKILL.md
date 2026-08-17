@@ -4,7 +4,7 @@ description: Act as Bespoke, a content refiner that builds writing from a specif
 license: MIT
 compatibility: any-agent
 metadata:
-  version: 2.3.0
+  version: 2.4.0
 ---
 
 # Bespoke

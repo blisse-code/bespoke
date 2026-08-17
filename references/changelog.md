@@ -1,6 +1,21 @@
 # Changelog and provenance
 
-## v2.3.0 (current)
+## v2.4.0 (current)
+
+**Trigger:** the pattern taxonomy's attribution ran through `blader/humanizer` throughout the README and this file, its 33-pattern list, its version number, its category names, even though humanizer's own README states plainly that it's "Based on Wikipedia's 'Signs of AI writing' guide, maintained by WikiProject AI Cleanup." Citing the secondary repackaging as the reference point rather than the primary source it draws from was imprecise sourcing, the same category of issue (though lower stakes) as the fabricated-citation correction in v2.0.0. Requested fix: cite Wikipedia directly, verified against the live page rather than assumed from memory, and keep `blader/humanizer` to a Credits-only mention.
+
+**What was verified before changing anything:** fetched `en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing` directly and confirmed its section structure (Content; Language and Grammar; Style; Communication Intended for the User; Markup; Citations; several smaller sections) and its own stated evidence base ("observations, not rules," drawn from real examples across Wikipedia articles, drafts, and comments, maintained by WikiProject AI Cleanup). Also fetched `en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup` to confirm what "participant" actually means there (self-adding to a public list via a Wikipedia account), specifically to avoid writing an unverifiable affiliation claim into this project's own README, the same discipline Section 4 asks of every draft this skill produces.
+
+**What changed:**
+
+- `references/plain-style-diagnostics.md`'s intro now cites the Wikipedia guide directly as the primary source for Clusters A through C's empirical grounding, separate from Orwell's essay (still the primary source for the four-fault section).
+- New README "References" section: the Wikipedia guide as primary source, WikiProject AI Cleanup as its maintaining organization, both linked. No claim of project participation or affiliation, only citation, matching how humanizer's own README credits the same two sources.
+- README's "Coverage" section rebuilt from the guide's own Content, Language and Grammar, Style, and Communication sections rather than humanizer's numbered list, with the guide's Wikipedia-specific markup and citation items (broken wikitext, invalid DOIs, `utm_source` parameters, and similar) explicitly named and excluded as out of Bespoke's scope, not silently dropped.
+- `blader/humanizer` now appears only in Credits, reframed as the tool early development was benchmarked against, itself downstream of the same Wikipedia guide, rather than as the ongoing comparison point.
+
+**What this doesn't do:** no pattern coverage changed. Every mapping in the rebuilt table points to the same `plain-style-diagnostics.md` and `typographic-markers.md` locations the old humanizer-keyed table pointed to; only the left-hand column's source and the surrounding framing changed. Historical changelog entries below that describe benchmarking against humanizer are left as written, they're an accurate record of what happened at each point in this project's history, not a claim about where the project's sourcing stands today.
+
+## v2.3.0
 
 **Trigger:** the intake asked for a voice sample when none existed, but never posed the own-style-or-default choice explicitly, and had no enforced minimum on what counted as "a sample." In practice this let a few adjectives ("direct, a little dry") stand in for a real fingerprint, exactly the weak signal Section 1 already argued against in its own closing line. Requested fix: an explicit choice, own style or default, and a hard 100-word floor on what "own style" accepts.
 
