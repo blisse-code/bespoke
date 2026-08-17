@@ -86,15 +86,108 @@ Intention: own the delay without sounding defensive
 
 Give it 2-3 paragraphs of your own past writing instead of adjectives when you can. A real sample gives the stylometric layer (below) something to actually measure.
 
+## Before / after example
+
+*(Illustration note: the "before" is a representative generic-AI-written passage, not a real product announcement. The "after" applies the voice profile from the intake example above, direct, a little dry, no corporate hedging, and adds a few concrete specifics, like "three teams asked" and "check Settings," that stand in for the kind of real detail a user would supply in an actual session. Bespoke doesn't invent those in practice; it asks for them or leaves the sentence plain. See Section 4's specificity test.)*
+
+**Before (generic AI-written text):**
+
+> ## 🚀 Introducing Smart Scheduling: A Game-Changer for Your Workflow
+>
+> We're thrilled to announce the launch of Smart Scheduling, a feature that stands as a testament to our commitment to innovation, efficiency, and user delight. This pivotal update marks a key turning point in our platform's evolving landscape.
+>
+> **Intelligent Automation:** Intelligent automation ensures your calendar stays perfectly organized.
+> **Seamless Integration:** Seamless integration means Smart Scheduling works effortlessly with the tools you already love.
+> **Real-Time Sync:** Real-time sync keeps everyone — teammates, clients, and stakeholders — on the exact same page.
+>
+> In order to fully leverage this robust new capability, users simply need to enable it in Settings. It could potentially possibly make a meaningful difference for teams juggling multiple calendars.
+>
+> Additionally, Smart Scheduling isn't just a tool — it's a philosophy. It's not about saving time, it's about giving that time back to what truly matters. Whether you're a solo founder, a growing startup, or an established enterprise, Smart Scheduling has something for everyone.
+>
+> We hope this helps streamline your day! Let us know if you have any questions — we'd love to hear from you. 🎉
+>
+> Overall, we're incredibly excited about what this means for the future. The road ahead looks bright, and we can't wait to see what you build next.
+
+**After (Bespoke rewrite):**
+
+> Smart Scheduling is live. Check Settings to turn it on.
+>
+> It syncs your calendar with the tools you're already using, so teammates, clients, and anyone else on the invite are looking at the same times. No import step, no separate app to check.
+>
+> We built it because three teams asked for the same thing in one month: stop making them reconcile two calendars by hand. If that's not your problem, you probably won't notice this update, and that's fine.
+>
+> Turn it on and tell us what breaks.
+
+Every pattern in the "before" maps to a specific rule this skill applies: the heading trades Title Case and an emoji for plain sentence case with no decoration; "stands as a testament to... innovation, efficiency, and user delight" (a dying metaphor stacked with rule-of-three padding) becomes nothing, because the fact that the feature exists doesn't need a legacy claim; the bolded inline-header list collapses into two plain sentences; "in order to fully leverage this robust... capability" (a filler phrase plus pretentious diction) becomes "so"; "could potentially possibly" (stacked hedging) becomes a specific, sourced reason instead of a hedge; the em dashes are gone; and the closing "Overall, we're incredibly excited..." (a generic positive conclusion) is replaced by an actual next step. See [Coverage](#coverage-against-bladerhumanizer) below for where each pattern lives in the skill.
+
 ## What it does
 
 - **A stylometric voice fingerprint**, not a one-shot style match: function-word habits, sentence-length variance, opening patterns, and the writer's own recurring bigrams and trigrams, read from a real sample and kept for the rest of the conversation.
 - **Orwell's plain-style check**, applied as a live diagnostic: dying metaphors, verbal false limbs, pretentious diction, and meaningless words, the same four faults named in 1946, with current examples.
+- **Five clusters of structural patterns beyond Orwell's essay**: borrowed authority, decorative structure, borrowed register, hedging and throat-clearing, and mechanical uniformity, covering everything from significance inflation and promotional language to stacked hedging, throat-clearing openers, and uniform transition-word rotation across a whole document. See [Coverage](#coverage-against-bladerhumanizer) below for the full pattern list.
+- **A hard zero-default on em and en dashes**, not just "use sparingly": the finished draft is scanned for `—`, `–`, and their spaced/doubled-hyphen equivalents before delivery, unless a real voice sample shows the writer actually uses them, in which case the sample wins outright.
 - **A formulaic-language swap, not a ban.** Pre-formed phrasing is normal and necessary for fluent writing; the skill directs it toward the writer's own recurring phrases instead of shared clichés.
 - **A specificity test drawn from forensic content analysis**: contextual embedding, unexpected complications, reproduced (not summarized) conversation, and admitted gaps, the actual criteria used to distinguish genuine accounts from fabricated ones, repurposed as a construction checklist.
+- **Presence, not just absence.** Stripping every flagged pattern out and putting nothing back produces sterile prose, a different failure with the same symptom. Once a voice fingerprint exists, the skill writes toward it: uneven rhythm, real stance, unresolved mixed feelings, genuine self-correction, gated by content type and bounded by the no-fabrication rule throughout.
 - **Platform-specific structure**: Context-Core-Connect for LinkedIn and Substack, hook-plus-white-space for X and Threads, tight distillation for email and Slack.
+- **Three invocation modes**: pasted text (draft plus notes on what changed), file mode (rewrites a file in place, prose only), and embedded mode (bare final text for another agent or task using this skill as one step of a larger job).
 - **An honest engagement gate.** Rapport techniques that work by being honest are always available. Techniques that work by deceiving the reader are gated to disclosed, consensual contexts, not applied by default to published, audience-facing content. See `references/engagement-ethics.md`.
 - **Verified detection science, not fabricated statistics.** `references/detection-science.md` documents a citation-fabrication finding caught and excluded during research, and why current classifier-based detectors make surface-level evasion a weaker strategy than genuine specificity.
+
+## Coverage against blader/humanizer
+
+Bespoke was originally benchmarked against [blader/humanizer](https://github.com/blader/humanizer), an existing open-source AI-tell removal skill built on Wikipedia's "Signs of AI writing" guide. v2.2.0 closed a full audit against humanizer v2.9.1's complete 33-pattern taxonomy: every named pattern there has a documented equivalent here, and several patterns exist in Bespoke with no equivalent in humanizer. The table below is the audit, kept current with each version; see `references/changelog.md` for the account of what changed and why.
+
+### Every humanizer pattern, and where it lives in Bespoke
+
+| # | humanizer pattern | Where it lives in Bespoke |
+|---|---|---|
+| 1 | Significance inflation | `plain-style-diagnostics.md`, Fault 1, "Significance and legacy inflation" |
+| 2 | Notability namedropping | `plain-style-diagnostics.md`, Cluster A |
+| 3 | Superficial -ing analyses | `plain-style-diagnostics.md`, "Padding at the paragraph level" |
+| 4 | Promotional language | `plain-style-diagnostics.md`, Fault 1, "Promotional and brochure language" |
+| 5 | Vague attributions | `plain-style-diagnostics.md`, Cluster A |
+| 6 | Formulaic "Challenges" sections | `plain-style-diagnostics.md`, "Padding at the paragraph level" |
+| 7 | AI vocabulary | `plain-style-diagnostics.md`, Fault 3, tied to `SKILL.md` Section 1's frequency framing |
+| 8 | Copula avoidance | `plain-style-diagnostics.md`, Cluster B |
+| 9 | Negative parallelisms / tailing negations | `plain-style-diagnostics.md`, Cluster B |
+| 10 | Rule of three | `plain-style-diagnostics.md`, Cluster B |
+| 11 | Synonym cycling | `plain-style-diagnostics.md`, Cluster B |
+| 12 | False ranges | `plain-style-diagnostics.md`, Cluster B |
+| 13 | Passive voice / subjectless fragments | `plain-style-diagnostics.md`, Fault 2 |
+| 14 | Em / en dashes | `typographic-markers.md` — hard zero-default, not "use sparingly" |
+| 15 | Boldface overuse | `typographic-markers.md` |
+| 16 | Inline-header lists | `typographic-markers.md` |
+| 17 | Title Case headings | `typographic-markers.md` |
+| 18 | Emojis | `typographic-markers.md` |
+| 19 | Curly quotes | `typographic-markers.md` |
+| 20 | Chatbot artifacts | `plain-style-diagnostics.md`, Cluster C |
+| 21 | Cutoff disclaimers / speculative gap-filling | `SKILL.md` Section 4, folded into the specificity test rather than a word list |
+| 22 | Sycophantic / servile tone | `plain-style-diagnostics.md`, Cluster C |
+| 23 | Filler phrases | `plain-style-diagnostics.md`, Fault 2, stock-phrase list |
+| 24 | Excessive hedging | `plain-style-diagnostics.md`, Cluster D, "Stacked hedging" |
+| 25 | Generic positive conclusions | `plain-style-diagnostics.md`, Cluster D |
+| 26 | Hyphenated word pair overuse | `typographic-markers.md` |
+| 27 | Persuasive authority tropes | `plain-style-diagnostics.md`, Cluster A |
+| 28 | Signposting and announcements | `plain-style-diagnostics.md`, Cluster B |
+| 29 | Fragmented headers | `plain-style-diagnostics.md`, Cluster B |
+| 30 | Diff-anchored writing | `plain-style-diagnostics.md`, "Padding at the paragraph level" |
+| 31 | Manufactured punchlines / staccato drama | `plain-style-diagnostics.md`, Cluster B |
+| 32 | Aphorism formulas | `plain-style-diagnostics.md`, Cluster B |
+| 33 | Conversational rhetorical openers | `plain-style-diagnostics.md`, Cluster C |
+
+### Patterns and features Bespoke has that humanizer doesn't
+
+- **Definitional throat-clearing openers** ("X refers to..." used to warm up a paragraph before the real point) — `plain-style-diagnostics.md`, Cluster D.
+- **Recap and meta-commentary closings** ("In summary," "to conclude," restating what a piece already said) — Cluster D.
+- **Uniform transition-word rotation** (mechanically cycling However / Moreover / Furthermore / Additionally across paragraphs) — Cluster E.
+- **Structural symmetry addiction** (every section forced to the same paragraph count regardless of what the content needs) — Cluster E.
+- **Frequency-based AI-vocabulary detection tied to stylometry.** The wider AI-vocabulary list under Fault 3 is explicitly framed as an anomalous-rate signal connected to `SKILL.md` Section 1's function-word fingerprinting, not a flat banned-word list, so a single instance of a listed word isn't treated as a violation on its own.
+- **Presence, not just absence** (`SKILL.md` Section 9). Removing every flagged pattern and adding nothing back is a different failure with the same symptom as generated prose. Once a voice fingerprint exists, the skill actively writes toward it: uneven rhythm, real stance, unresolved mixed feelings, genuine self-correction, bounded by the no-fabrication rule throughout.
+- **A stylometric voice fingerprint built from a real sample**, kept and updated across a whole conversation rather than applied once per rewrite (`SKILL.md` Section 1), grounded in the same authorship-attribution research used in forensic linguistics.
+- **A specificity test from forensic content-analysis criteria** (CBCA, Reality Monitoring) for distinguishing genuine detail from plausible-sounding invention, not just an AI-tell scan (`SKILL.md` Section 4).
+- **An honest-engagement gate** on rapport techniques that work by deceiving the reader, restricted to disclosed, consensual contexts rather than applied by default (`references/engagement-ethics.md`).
+- **Verified, sourced detection science**, including a documented citation-fabrication finding caught and excluded during this project's own research (`references/detection-science.md`).
 
 ## Repository structure
 
@@ -128,6 +221,7 @@ Stdlib only, no `pip install` required. Checks that `SKILL.md`'s name and versio
 
 ## Version history
 
+- **2.2.0** — Full audit against `blader/humanizer` v2.9.1's complete 33-pattern taxonomy (see [Coverage](#coverage-against-bladerhumanizer) above). Closed every remaining gap: significance/legacy inflation and promotional/brochure language (Fault 1), the full high-frequency AI-vocabulary list tied to Section 1's stylometry framing (Fault 3), passive voice and subjectless fragments as a named pattern (Fault 2), filler phrases as an explicit stock list (Fault 2), and two new clusters, D (hedging, throat-clearing, and empty closes) and E (mechanical uniformity), the latter with no equivalent in humanizer's taxonomy. Hardened the em-dash default from "rare" to a zero-default with a pre-delivery scan, matching humanizer's hard-constraint treatment while keeping the sample-override principle. Added `SKILL.md` Section 9 ("Presence, not just absence") on actively writing toward the voice fingerprint rather than only scrubbing tells, Section 10 (invocation modes: pasted text, file, embedded), and an explicit two-question self-audit step in the Application workflow. Expanded `plain-style-diagnostics.md`'s false-positive guidance from 4 items to 15. Added a before/after example and the coverage table above to this README. See `references/changelog.md` for the full audit account.
 - **2.1.0** — Closed a coverage gap found during a direct comparison against the tool this skill was originally benchmarked against: added typography and formatting as voice-fingerprint markers (`references/typographic-markers.md`) and three clusters of structural patterns (borrowed authority, decorative structure, borrowed register) to `references/plain-style-diagnostics.md`. Also fixed a stale internal section cross-reference. See `references/changelog.md` for the specific patterns added and why each was placed where it was.
 - **2.0.0** — Rebuilt around independent research (stylometry, Orwell's plain-style diagnostics, formulaic-language psycholinguistics, forensic content-analysis criteria) rather than a comparative audit of an existing tool. See `references/changelog.md` for the full account of what changed and why.
 - **1.0.0** — Initial release, built after benchmarking against an existing AI-tell removal tool. Superseded by 2.0.0's independent research base.

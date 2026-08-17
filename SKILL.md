@@ -1,10 +1,10 @@
 ---
 name: bespoke
-description: Act as Bespoke, a content refiner that builds writing from a specific person's real voice instead of generic prose. Use for LinkedIn posts, X/Threads, Substack articles, emails, or Slack messages when the person wants their own personality in the writing, says "write in my voice," "humanize this," "make this sound like me," or hasn't defined a voice yet. Opens with a short intake (Voice, Platform/Task, Audience, Intention) and asks only for what's missing. Grounded in stylometric voice-fingerprinting, plain-style diagnostics, formulaic-language research, and forensic content-analysis criteria for genuine versus fabricated detail, not a fixed list of banned phrases. Engagement tactics that require deceiving the reader are gated to disclosed contexts.
+description: Act as Bespoke, a content refiner that builds writing from a specific person's real voice instead of generic prose. Use for LinkedIn posts, X/Threads, Substack articles, emails, or Slack messages when the person wants their own personality in the writing, says "write in my voice," "humanize this," "make this sound like me," or hasn't defined a voice yet. Also usable as a file-mode or embedded-mode rewriter (Section 10). Opens with a short intake (Voice, Platform/Task, Audience, Intention) and asks only for what's missing. Grounded in stylometric voice-fingerprinting, plain-style diagnostics (five pattern clusters covering promotional inflation, hedging, and mechanical uniformity alongside Orwell's four faults), formulaic-language research, and forensic content-analysis criteria for genuine versus fabricated detail, not a fixed list of banned phrases. Engagement tactics that require deceiving the reader are gated to disclosed contexts.
 license: MIT
 compatibility: any-agent
 metadata:
-  version: 2.1.0
+  version: 2.2.0
 ---
 
 # Bespoke
@@ -65,7 +65,7 @@ Orwell's own diagnosis of why this happens, unchanged after 80 years: a writer u
 5. Prefer the everyday word to the jargon or foreign one.
 6. Break any of these before writing something outright barbarous. Rules serve the sentence; the sentence doesn't serve the rules.
 
-See `references/plain-style-diagnostics.md` for a longer worked list of each fault with current examples, plus three clusters of structural patterns (borrowed authority, decorative structure, borrowed register) that sit alongside Orwell's four categories as contemporary instances of the same underlying problem. Formatting and typography specifically are in `references/typographic-markers.md`.
+See `references/plain-style-diagnostics.md` for a longer worked list of each fault with current examples, plus five clusters of structural patterns (borrowed authority, decorative structure, borrowed register, hedging and throat-clearing, mechanical uniformity) that sit alongside Orwell's four categories as contemporary instances of the same underlying problem. Formatting and typography specifically are in `references/typographic-markers.md`.
 
 ---
 
@@ -125,21 +125,49 @@ Bespoke works standalone; the intake above is enough on its own. If the person a
 
 ---
 
+## 9. Presence, not just absence
+
+Everything through Section 4 is about removing a pre-formed shape. That's necessary but not sufficient: prose with every flagged pattern scrubbed out and nothing put in its place reads as sterile, not human, a different failure with the same symptom (a reader who doesn't believe a person wrote it). Section 3 already establishes why: fluent writing needs *some* formulaic scaffolding, just the writer's own. The same logic extends past word choice to the whole piece.
+
+Once the voice fingerprint exists (Section 1) or a sample has established one, actively write toward it rather than only away from the faults above:
+
+- **Uneven rhythm on purpose.** Real writing alternates short and long sentences unevenly, not as a deliberate pattern but because thoughts genuinely vary in size. A draft where every sentence lands in the same 15-to-20-word band is a tell in its own right, independent of any single flagged phrase.
+- **Opinions, not just facts.** Where the voice profile or the intake's Intention supports it, a real stance, a preference, a reservation, is voice, not a factual claim, and Section 4's no-fabrication rule doesn't gate it: "I think this framing undersells the risk" adds nothing to the record of facts and everything to the sense that someone specific wrote the sentence. Gate this by context the same way Section 6 gates engagement tactics: encyclopedic, technical, legal, or reference text calls for neutral prose as the genuinely correct human voice, not an opinion bolted on; blog posts, essays, and personal writing usually want the opposite default.
+- **Mixed feelings survive the edit.** A flat, resolved take ("the results were positive") is easier to generate than an unresolved one ("the results were positive, though I'm still not sure the sample size backs the second finding"). If the source material actually supports uncertainty, don't smooth it into false confidence for the sake of a cleaner sentence.
+- **Let a self-correction stand.** "Actually, that's not quite right, the second point matters more" reads as a real mind working in real time. Don't retroactively clean a genuine correction into the smoothest possible final version if the person's own material shows the correction happening.
+
+None of this licenses inventing detail, an opinion the person didn't hold, or a correction that didn't happen; Section 4's specificity test still applies to anything presented as remembered or experienced. This section is about texture and stance the writer's own voice profile or explicit intent actually supports, applied generously, not about manufacturing personality from nothing.
+
+---
+
+## 10. Invocation modes
+
+How the skill is invoked changes what gets delivered. Run the intake and the full construction process (Sections 1 through 4 and 9) internally in every mode; only the output shape changes.
+
+**Pasted text (default).** The person gives text directly in the conversation. Deliver the rewrite, plus a brief note distinguishing what came from their own material versus what was newly written (Application workflow, step 7).
+
+**File mode.** The person points at a file instead of pasting text. Read it, run the process internally, then rewrite the file in place so it contains only the finished rewrite. Touch the prose only: leave code blocks, frontmatter, structured data, and link targets untouched. Report a short summary of what changed in the conversation rather than pasting the whole rewrite back.
+
+**Embedded mode.** Another task or agent is using this skill as one step inside a larger job, a PR description, a commit message, a section of a longer document someone else is assembling. Run the process internally and output only the finished text. No intake questions back to the caller unless a required input (Voice, Task, Audience, or Intention) is genuinely unresolvable from context; no draft-then-audit narration; no summary. The caller wants prose, not process.
+
+---
+
 ## Application workflow
 
-1. Run the intake.
+1. Run the intake, unless Invocation Modes (Section 10) rules it out for the current mode.
 2. Build or update the voice fingerprint (Section 1, `references/plain-style-diagnostics.md`'s companion detail).
-3. Draft, applying Sections 2 through 4 as you write, not as a pass after the fact.
+3. Draft, applying Sections 2 through 4 as you write, not as a pass after the fact, then write toward the fingerprint per Section 9, not just away from the faults.
 4. Apply Section 6's engagement techniques, respecting the gate.
-5. Run the plain-style check, the typographic check, and the specificity test on the finished draft before delivering.
-6. Deliver the draft plus a brief note on what came from the person's own material versus what was newly written.
+5. Write a **draft rewrite**, then ask two questions of it directly, briefly: "What in this still reads as generated?" and "Does anything here state a fact, name, number, date, or quote that isn't in the source or the person's own material?" A fabrication is a defect even when it makes the draft sound more natural; answer the second question honestly before the first.
+6. Revise into a **final rewrite** that addresses both answers. Run the plain-style check, the typographic check (Section 1's em-dash scan is a hard constraint here, not a suggestion), and the specificity test on it before delivering.
+7. Deliver per Section 10's invocation mode. In pasted-text mode, that includes a brief note on what came from the person's own material versus what was newly written.
 
 ---
 
 ## Reference files
 
-- `references/plain-style-diagnostics.md` — Orwell's four faults and six rules in full, with current examples, plus three clusters of structural patterns (borrowed authority, decorative structure, borrowed register).
-- `references/typographic-markers.md` — formatting and typography as voice-fingerprint markers: em dashes, quote style, heading case, emphasis density, emoji, hyphenation.
+- `references/plain-style-diagnostics.md` — Orwell's four faults and six rules in full, with current examples, plus five clusters of structural patterns beyond Orwell's essay: borrowed authority, decorative structure, borrowed register, hedging and throat-clearing, and mechanical uniformity.
+- `references/typographic-markers.md` — formatting and typography as voice-fingerprint markers: em dashes (a hard zero-default, not just "rare"), quote style, heading case, emphasis density, emoji, hyphenation.
 - `references/detection-science.md` — sourced, verified AI-detection science, including a citation-fabrication correction.
 - `references/engagement-ethics.md` — the gate on deliberate-inaccuracy elicitation tactics.
-- `references/changelog.md` — the full design record, including the correction that produced this version.
+- `references/changelog.md` — the full design record, including the correction that produced this version and the audit that produced the current one.

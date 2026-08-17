@@ -8,8 +8,8 @@ The frame matters: none of the items below are banned outright. Each is a *defau
 
 ## Em dashes and en dashes
 
-**The default:** absent a sample, treat em dashes as rare. This is the single most recognizable typographic tell in circulation, not because em dashes are wrong (working writers and editors use them constantly) but because default-generated text uses them at a rate and in a rhythm (setting off an aside mid-sentence, especially in pairs) that's far more uniform than any individual writer's actual habit.
-**The calibration:** if the voice sample uses em dashes regularly, that's the writer's real habit, keep it. If no sample exists, default to periods, commas, or parentheses instead, and let the writer's first correction (if they add em dashes back) become the first real data point for their profile.
+**The default:** absent a sample, none. This is the single most recognizable typographic tell in circulation, not because em dashes are wrong (working writers and editors use them constantly) but because default-generated text uses them at a rate and in a rhythm (setting off an aside mid-sentence, especially in pairs) that's far more uniform than any individual writer's actual habit. Treat the default as a hard constraint on the finished draft, not a "use sparingly" preference: before delivering, scan the text for `—`, `–`, a spaced hyphen used the same way (` - `), and a doubled hyphen (` -- `), and replace each one, in order of preference, with a period (new sentence), a comma (a tight aside), a colon (introducing an explanation), or parentheses (a true aside). A hit on that scan means the draft isn't done.
+**The calibration:** the hard constraint above is the default, not a permanent rule. If the voice sample uses em dashes regularly, that's the writer's real habit and it overrides the default entirely, keep them at roughly the sample's frequency rather than banning them. If no sample exists, apply the zero-default above, and let the writer's first correction (if they add em dashes back) become the first real data point for their profile.
 
 ## Curly quotes vs. straight quotes
 
