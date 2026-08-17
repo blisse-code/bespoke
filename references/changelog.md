@@ -1,6 +1,12 @@
 # Changelog and provenance
 
-## v2.2.0 (current)
+## v2.2.1 (current)
+
+**Trigger:** the skill was installed locally and run for the first time end-to-end (previous versions were validated by reading, not by invocation), specifically to produce a second worked example for `README.md` demonstrating Section 1 (voice fingerprint) and Section 4 (specificity test) on a short, unformatted personal narrative, layered under a separate fixed personal-voice skill per Section 8, rather than the mostly-structural/typographic before/after already in the README.
+
+**What changed:** README-only. Added "Before / after example 2," a fictional, non-identifying short narrative (a Kuala Lumpur date that turns into a photoshoot) run through the actual installed skill rather than hand-written to spec, with the fixed personal-voice skill's rules (no em dashes, zero cap on unsupported facts, an acid test against real named entities, burstiness, grade 6-7 readability) standing in for Bespoke's generic Voice defaults. No change to `SKILL.md`'s instructions or to any pattern in `plain-style-diagnostics.md` or `typographic-markers.md`; version bumped for traceability of the README content change, matching this project's practice of logging every content change rather than only instruction changes.
+
+## v2.2.0
 
 **Trigger:** a full, line-by-line audit against `blader/humanizer`'s complete 33-pattern taxonomy (v2.9.1, the same version v2.1.0 was benchmarked against), requested to confirm Bespoke has no remaining coverage gap against it. v2.1.0 had closed the largest gap (typography, borrowed authority, decorative structure, borrowed register); this pass checked the rest pattern-by-pattern rather than assuming parity.
 

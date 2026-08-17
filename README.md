@@ -86,7 +86,7 @@ Intention: own the delay without sounding defensive
 
 Give it 2-3 paragraphs of your own past writing instead of adjectives when you can. A real sample gives the stylometric layer (below) something to actually measure.
 
-## Before / after example
+## Before / after example 1: structural and typographic tells
 
 *(Illustration note: the "before" is a representative generic-AI-written passage, not a real product announcement. The "after" applies the voice profile from the intake example above, direct, a little dry, no corporate hedging, and adds a few concrete specifics, like "three teams asked" and "check Settings," that stand in for the kind of real detail a user would supply in an actual session. Bespoke doesn't invent those in practice; it asks for them or leaves the sentence plain. See Section 4's specificity test.)*
 
@@ -119,6 +119,26 @@ Give it 2-3 paragraphs of your own past writing instead of adjectives when you c
 > Turn it on and tell us what breaks.
 
 Every pattern in the "before" maps to a specific rule this skill applies: the heading trades Title Case and an emoji for plain sentence case with no decoration; "stands as a testament to... innovation, efficiency, and user delight" (a dying metaphor stacked with rule-of-three padding) becomes nothing, because the fact that the feature exists doesn't need a legacy claim; the bolded inline-header list collapses into two plain sentences; "in order to fully leverage this robust... capability" (a filler phrase plus pretentious diction) becomes "so"; "could potentially possibly" (stacked hedging) becomes a specific, sourced reason instead of a hedge; the em dashes are gone; and the closing "Overall, we're incredibly excited..." (a generic positive conclusion) is replaced by an actual next step. See [Coverage](#coverage-against-bladerhumanizer) below for where each pattern lives in the skill.
+
+## Before / after example 2: voice and specificity, layered with a fixed personal-voice skill
+
+The first example shows structural and typographic tells getting removed from a formatted document. This one shows the other half of the skill, Sections 1 and 4, working on a short, unformatted personal narrative, and demonstrates Section 8: layering Bespoke under a separate, fixed personal-voice skill rather than using Bespoke's generic defaults.
+
+*(Illustration note: this is a fictional narrative written to demonstrate the skill, not a real account, and doesn't depict any real, identifiable person. The "before" is a short, deliberately generic AI-written passage. For the "after," Bespoke's own intake (Section "The intake") was pre-filled per Section 8 by an existing fixed-voice skill, no em dashes, zero cap on unsupported facts, an "acid test" against real named entities, burstiness, grade 6-7 readability, restrained tone, no performed vulnerability, a quiet close over a dramatic one, rather than by a fresh sample. The specific narrative details below, the street name, the dialogue, the dead flash, are illustrative texture standing in for what a real user's own material would supply; see Section 4's specificity test for why a rewrite shouldn't invent this kind of detail about something that actually happened.)*
+
+**Before (generic AI-written text, 199 characters):**
+
+> Nestled in the vibrant heart of Kuala Lumpur, an unofficial date with a stunning model blossomed into an unforgettable, impromptu photoshoot, a testament to genuine chemistry and effortless artistry.
+
+**After (Bespoke rewrite, voice layered from a fixed personal-voice skill):**
+
+> Met her at a rooftop bar off Jalan Alor on a Tuesday, the kind of humid Kuala Lumpur night that turns any jacket into a mistake by nine. She modeled part-time, she said, mostly for local streetwear brands. I brought a camera out of habit, not intent.
+>
+> Two drinks in, she picked it up, turned it over, and said, "so are you going to use this or just carry it around."
+>
+> We ended up on the street outside for maybe twenty minutes, I didn't check. Streetlights and a wet road did most of the work. My flash died halfway through. Neither of us minded.
+
+What changed and why: "nestled in the vibrant heart of," "blossomed into," and "a testament to genuine chemistry and effortless artistry" (Fault 1's dying metaphors and promotional-language sub-family) are gone entirely rather than trimmed, because the plain fact underneath them, two people met, ended up taking pictures, doesn't need a frame telling the reader how to feel about it. In their place: a specific street and night (Section 4's contextual embedding), reproduced dialogue instead of summary ("she asked about the camera" would be the generic version), an unexpected complication a smooth invented account wouldn't think to include (the dead flash), and an admitted gap ("I didn't check") rather than false precision. Sentence length varies sharply, one long scene-setting sentence, then short and medium ones, per the layered skill's burstiness rule and Section 9's presence principle, rather than settling into the uniform mid-length rhythm generated text defaults to. Zero em dashes, per both the layered skill's hard rule and Section 1's typographic default. The close is a flat, quiet fact instead of a generic positive conclusion (Cluster D), which is the layered skill's own "solution is the hero, not the victim" instinct doing the same work Section 9 asks for from a different direction.
 
 ## What it does
 
@@ -221,6 +241,7 @@ Stdlib only, no `pip install` required. Checks that `SKILL.md`'s name and versio
 
 ## Version history
 
+- **2.2.1** — Added "Before / after example 2" to this README: a short, fictional, non-identifying personal narrative run through the installed skill with Voice pre-filled by a separate fixed personal-voice skill per Section 8, demonstrating Sections 1 and 4 (voice fingerprint, specificity test) on unformatted prose rather than the mostly structural/typographic first example. README-only; no change to `SKILL.md` or any pattern file. See `references/changelog.md`.
 - **2.2.0** — Full audit against `blader/humanizer` v2.9.1's complete 33-pattern taxonomy (see [Coverage](#coverage-against-bladerhumanizer) above). Closed every remaining gap: significance/legacy inflation and promotional/brochure language (Fault 1), the full high-frequency AI-vocabulary list tied to Section 1's stylometry framing (Fault 3), passive voice and subjectless fragments as a named pattern (Fault 2), filler phrases as an explicit stock list (Fault 2), and two new clusters, D (hedging, throat-clearing, and empty closes) and E (mechanical uniformity), the latter with no equivalent in humanizer's taxonomy. Hardened the em-dash default from "rare" to a zero-default with a pre-delivery scan, matching humanizer's hard-constraint treatment while keeping the sample-override principle. Added `SKILL.md` Section 9 ("Presence, not just absence") on actively writing toward the voice fingerprint rather than only scrubbing tells, Section 10 (invocation modes: pasted text, file, embedded), and an explicit two-question self-audit step in the Application workflow. Expanded `plain-style-diagnostics.md`'s false-positive guidance from 4 items to 15. Added a before/after example and the coverage table above to this README. See `references/changelog.md` for the full audit account.
 - **2.1.0** — Closed a coverage gap found during a direct comparison against the tool this skill was originally benchmarked against: added typography and formatting as voice-fingerprint markers (`references/typographic-markers.md`) and three clusters of structural patterns (borrowed authority, decorative structure, borrowed register) to `references/plain-style-diagnostics.md`. Also fixed a stale internal section cross-reference. See `references/changelog.md` for the specific patterns added and why each was placed where it was.
 - **2.0.0** — Rebuilt around independent research (stylometry, Orwell's plain-style diagnostics, formulaic-language psycholinguistics, forensic content-analysis criteria) rather than a comparative audit of an existing tool. See `references/changelog.md` for the full account of what changed and why.
